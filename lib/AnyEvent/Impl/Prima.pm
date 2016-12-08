@@ -1,4 +1,3 @@
-# warning: completely untested
 =head1 NAME
 
 AnyEvent::Impl::Prima - Prima event loop adapter for AnyEvent
