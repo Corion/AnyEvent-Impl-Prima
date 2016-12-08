@@ -31,7 +31,7 @@ $VERSION = '0.01';
 sub io($s,%r) { 
     Prima::File->new(
         file        => $r{fh}, 
-        mask        => ("w" eq $r{poll} ? fe::Write() : fe::Read()) | fe::Exception, 
+        mask        => ("w" eq $r{poll} ? fe::Write() : fe::Read()) | fe::Exception(),
         onRead      => $r{cb},
         onWrite     => $r{cb},
         onException => $r{cb}
