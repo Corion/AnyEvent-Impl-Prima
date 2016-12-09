@@ -65,7 +65,17 @@ sub timer( $s, %r ) {
     );
     $res->start;
     $res
-} 
+}
+
+sub poll {
+    require Prima::Application;
+    $::application->yield;
+}
+
+sub AnyEvent::CondVar::Base::_wait {
+    require Prima::Application;
+    $::application->yield until exists $_[0]{_ae_sent};
+}
 
 push @AnyEvent::REGISTRY,["Prima",__PACKAGE__]; 
 
