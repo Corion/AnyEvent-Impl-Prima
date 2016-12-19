@@ -28,6 +28,9 @@ no warnings 'experimental::signatures';
 use vars '$VERSION';
 $VERSION = '0.01';
 
+use Prima;
+use Prima::Application;
+
 sub io($s,%r) { 
     Prima::File->new(
         file        => $r{fh}, 
