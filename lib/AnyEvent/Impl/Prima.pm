@@ -31,14 +31,20 @@ $VERSION = '0.01';
 use Prima;
 use Prima::Application;
 
-sub io($s,%r) { 
-    Prima::File->new(
-        file        => $r{fh}, 
-        mask        => ("w" eq $r{poll} ? fe::Write() : fe::Read()) | fe::Exception(),
+
+sub io($s,%r) {
+    my $f = Prima::File->new(
+        mask        => ("w" eq $r{poll} ? fe::Write() : fe::Read()),
         onRead      => $r{cb},
         onWrite     => $r{cb},
         onException => $r{cb}
-    )
+    );
+    if( ! ref $r{fh}) {
+        $f->fd( $r{fh} )
+    } else {
+        $f->file( $r{fh} )
+    };
+    $f
 } 
 
 sub timer( $s, %r ) { 
@@ -46,6 +52,7 @@ sub timer( $s, %r ) {
     
     my $next = $r{ after } || $r{ interval };
     my $repeat = delete $r{ interval };
+
     
     # Convert to miliseconds for Prima
     $next *= 1000;
