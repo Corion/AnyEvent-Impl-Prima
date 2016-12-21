@@ -22,3 +22,5 @@ AnyEvent::Impl::Prima - Prima event loop adapter for AnyEvent
 Zsban Ambrus
 
 Max Maischein
+
+Dmitry Karasik
