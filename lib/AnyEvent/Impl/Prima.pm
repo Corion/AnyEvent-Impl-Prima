@@ -71,7 +71,7 @@ sub timer { my ( $s, %r ) = @_;
             };
             &$c()
         },
-        onDestroy => sub( $self ) {
+        onDestroy => sub { my ( $self ) = @_;
             #warn "Discarding $self";
             $self->stop;
         },
