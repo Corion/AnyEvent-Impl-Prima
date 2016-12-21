@@ -22,17 +22,16 @@ AnyEvent::Impl::Prima - Prima event loop adapter for AnyEvent
 
 package AnyEvent::Impl::Prima; 
 use strict;
-use feature 'signatures';
-no warnings 'experimental::signatures';
 
 use vars '$VERSION';
 $VERSION = '0.01';
 
+use AnyEvent;
 use Prima;
 use Prima::Application;
 
 
-sub io($s,%r) {
+sub io { my ($s,%r) = @_;
     my $f = Prima::File->new(
         mask        => ("w" eq $r{poll} ? fe::Write() : fe::Read()),
         onRead      => $r{cb},
@@ -47,7 +46,7 @@ sub io($s,%r) {
     $f
 } 
 
-sub timer( $s, %r ) { 
+sub timer { my ( $s, %r ) = @_;
     my($c,$g) = $r{cb};
     
     my $next = $r{ after } || $r{ interval };
@@ -61,18 +60,23 @@ sub timer( $s, %r ) {
     my %timer_params = (
         timeout => $next,
     );
-    
     my $res = Prima::Timer->new(
         timeout => $next,
-        onTick  => sub( $self ) {
+        onTick  => sub {
+            #warn "Timer $_[0] fired";
             if( $repeat ) {
-                $self->timeout( $repeat );
+                $_[0]->timeout( $repeat );
             } else {
-                $self->stop;
+                $_[0]->stop;
             };
             &$c()
-        }
+        },
+        onDestroy => sub( $self ) {
+            #warn "Discarding $self";
+            $self->stop;
+        },
     );
+    #warn "Starting new timer $res";
     $res->start;
     $res
 }
@@ -97,3 +101,7 @@ __END__
 Zsban Ambrus
 
 Max Maischein
+
+Dmitry Karasik
+
+=cut
