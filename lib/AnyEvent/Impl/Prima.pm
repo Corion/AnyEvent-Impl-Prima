@@ -62,6 +62,7 @@ sub timer { my ( $s, %r ) = @_;
     );
     my $res = Prima::Timer->new(
         timeout => $next,
+	owner   => undef,
         onTick  => sub {
             #warn "Timer $_[0] fired";
             if( $repeat ) {
@@ -86,9 +87,12 @@ sub poll {
     $::application->yield;
 }
 
+{
+no warnings 'redefine';
 sub AnyEvent::CondVar::Base::_wait {
     require Prima::Application;
     $::application->yield until exists $_[0]{_ae_sent};
+}
 }
 
 push @AnyEvent::REGISTRY,["Prima",__PACKAGE__]; 
