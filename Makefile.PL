@@ -35,7 +35,7 @@ WriteMakefile1(
         },
     },
     
-    MIN_PERL_VERSION => '5.006',
+    MIN_PERL_VERSION => '5.010',
 
     ($eumm_version >= 6.3001
       ? ('LICENSE'=> 'perl')
@@ -49,10 +49,10 @@ WriteMakefile1(
     PREREQ_PM => {
         'Prima'              => 0,
         'AnyEvent'           => 0,
-        'Filter::signatures' => 0,
     },
     TEST_REQUIRES => {
-        'Test::More' => 0,
+        'Test::More'         => 0,
+        'AnyEvent::HTTP'     => 0,
     },
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
