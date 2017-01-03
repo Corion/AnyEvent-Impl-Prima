@@ -47,7 +47,7 @@ WriteMakefile1(
     },
 
     PREREQ_PM => {
-        'Prima'              => 0,
+        'Prima'              => '1.50',
         'AnyEvent'           => 0,
     },
     TEST_REQUIRES => {
