@@ -46,7 +46,7 @@ sub io { my ($s,%r) = @_;
     $f
 } 
 
-sub AnyEvent::Impl::Prima::Timer::DESTROY { ${$_[0]}->destroy }
+sub AnyEvent::Impl::Prima::Timer::DESTROY { ${$_[0]}->destroy if $_[0] and ${$_[0]} }
 
 sub timer { my ( $s, %r ) = @_;
     my($c,$g) = $r{cb};
