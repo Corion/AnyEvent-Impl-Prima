@@ -46,6 +46,8 @@ sub io { my ($s,%r) = @_;
     $f
 } 
 
+sub AnyEvent::Impl::Prima::Timer::DESTROY { ${$_[0]}->destroy }
+
 sub timer { my ( $s, %r ) = @_;
     my($c,$g) = $r{cb};
     
@@ -60,7 +62,7 @@ sub timer { my ( $s, %r ) = @_;
     my %timer_params = (
         timeout => $next,
     );
-    my $res = Prima::Timer->new(
+    my $timer = Prima::Timer->new(
         timeout => $next,
         onTick  => sub {
             #warn "Timer $_[0] fired";
@@ -77,8 +79,8 @@ sub timer { my ( $s, %r ) = @_;
         },
     );
     #warn "Starting new timer $res";
-    $res->start;
-    $res
+    $timer->start;
+    return bless \ $timer, "AnyEvent::Impl::Prima::Timer";
 }
 
 sub poll {
@@ -86,9 +88,12 @@ sub poll {
     $::application->yield;
 }
 
+{
+no warnings 'redefine';
 sub AnyEvent::CondVar::Base::_wait {
     require Prima::Application;
     $::application->yield until exists $_[0]{_ae_sent};
+}
 }
 
 push @AnyEvent::REGISTRY,["Prima",__PACKAGE__]; 
