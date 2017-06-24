@@ -1,0 +1,63 @@
+{
+   "abstract" : "Prima event loop adapter for AnyEvent",
+   "author" : [
+      "Max Maischein <corion@cpan.org>"
+   ],
+   "dynamic_config" : 0,
+   "generated_by" : "ExtUtils::MakeMaker version 7.24, CPAN::Meta::Converter version 2.143240",
+   "license" : [
+      "perl_5"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "AnyEvent-Impl-Prima",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "AnyEvent" : "0",
+            "Prima" : "1.50",
+            "perl" : "5.010"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "AnyEvent::HTTP" : "0",
+            "Test::More" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "AnyEvent::Impl::Prima" : {
+         "file" : "lib/AnyEvent/Impl/Prima.pm",
+         "version" : "0.01"
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/Corion/anyevent-impl-prima.git",
+         "web" : "https://github.com/Corion/anyevent-impl-prima"
+      }
+   },
+   "version" : "0.01",
+   "x_static_install" : 1
+}
