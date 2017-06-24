@@ -1,27 +1,36 @@
 NAME
 
-    AnyEvent::Impl::Prima - Prima event loop adapter for AnyEvent
+AnyEvent::Impl::Prima - Prima event loop adapter for AnyEvent
 
-SYNOPSIS
 
-      use Prima;
-      use AnyEvent::Impl::Prima;
-      
-      my $mw = Prima::MainWindow->new();
-      
-      my $timer = AnyEvent->timer(
-          after => 10,
-          cb => sub { $mw->close; },
-      );
-    
-      Prima->run;
-      
+
+INSTALLATION
+
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
+
+  cpanm .
+  cpan  .
+  cpanp -i .
+
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
+
+  perl Makefile.PL
+  make
+  make test
+  make install
+
+
+
+
 
 AUTHORS
 
-    Zsban Ambrus
+Zsban Ambrus
 
-    Max Maischein
+Max Maischein
 
-    Dmitry Karasik
+Dmitry Karasik
+
 
