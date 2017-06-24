@@ -16,7 +16,14 @@ matrix:
   allow_failures:
     - perl: blead
 
-sudo: false
+sudo: required
+
+dist: trusty
+
+before_install:
+  - sudo apt-get -qq update
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
 
 install:
   - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
