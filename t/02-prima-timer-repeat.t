@@ -1,6 +1,17 @@
 #!perl -w
-use Prima;
 use Test::More tests => 1;
+BEGIN {
+if( $^O !~ /mswin|darwin/i ) {
+    if( ! $ENV{DISPLAY} ) {
+        SKIP: {
+            skip "Need a display for the tests", 1;
+        };
+        exit;
+    };
+};
+}
+
+use Prima;
 use AnyEvent;
 use Prima::Application;
 use AnyEvent::Impl::Prima;

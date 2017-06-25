@@ -1,11 +1,20 @@
 #!perl -w
-use Prima;
 use Test::More tests => 1;
-use Prima::Application;
+BEGIN {
+if( $^O !~ /mswin|darwin/i ) {
+    if( ! $ENV{DISPLAY} ) {
+        SKIP: {
+            skip "Need a display for the tests", 1;
+        };
+        exit;
+    };
+};
+}
 use AnyEvent::Impl::Prima;
 use AnyEvent;
 use AnyEvent::HTTP;
-
+use Prima;
+use Prima::Application;
 my $mw = Prima::MainWindow->new();
 
 use Data::Dumper;
