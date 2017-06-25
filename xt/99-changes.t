@@ -4,6 +4,17 @@ use strict;
 use File::Find;
 use Test::More tests => 2;
 
+BEGIN {
+if( $^O !~ /mswin|darwin/i ) {
+    if( ! $ENV{DISPLAY} ) {
+        SKIP: {
+            skip "Need a display for the tests", 2;
+        };
+        exit;
+    };
+};
+}
+
 =head1 PURPOSE
 
 This test ensures that the Changes file

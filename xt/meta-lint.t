@@ -10,6 +10,17 @@ use Test::More tests => 4;
 use Parse::CPAN::Meta;
 use CPAN::Meta::Validator;
 
+BEGIN {
+if( $^O !~ /mswin|darwin/i ) {
+    if( ! $ENV{DISPLAY} ) {
+        SKIP: {
+            skip "Need a display for the tests", 4;
+        };
+        exit;
+    };
+};
+}
+
 use lib '.';
 use vars '%module';
 require 'Makefile.PL';
