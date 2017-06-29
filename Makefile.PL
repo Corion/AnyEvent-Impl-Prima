@@ -65,8 +65,9 @@ my %module = (
         'AnyEvent'           => 0,
     },
     TEST_REQUIRES => {
-        'Test::More'         => 0,
-        'AnyEvent::HTTP'     => 0,
+        'Test::More'              => 0,
+        'AnyEvent::HTTP'          => 0,
+        'Test::HTTP::LocalServer' => 0,
     },
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },

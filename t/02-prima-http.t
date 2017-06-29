@@ -15,11 +15,16 @@ use AnyEvent;
 use AnyEvent::HTTP;
 use Prima;
 use Prima::Application;
+
+use Test::HTTP::LocalServer;
+
+my $server = Test::HTTP::LocalServer->spawn();
+
 my $mw = Prima::MainWindow->new();
 
 use Data::Dumper;
 my $res;
-my $w = http_get 'http://www.google.de',
+my $w = http_get $server->url,
     sub { $res = $_[1]; print Dumper $res; $mw->close },
 ;
 

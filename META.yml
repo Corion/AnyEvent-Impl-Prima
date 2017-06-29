@@ -5,6 +5,7 @@ author:
 build_requires:
   AnyEvent::HTTP: '0'
   ExtUtils::MakeMaker: '0'
+  Test::HTTP::LocalServer: '0'
   Test::More: '0'
 configure_requires:
   ExtUtils::MakeMaker: '0'
