@@ -4,7 +4,7 @@ BEGIN {
 if( $^O !~ /mswin|darwin/i ) {
     if( ! $ENV{DISPLAY} ) {
         SKIP: {
-            skip "Need a display for the tests", 1;
+            skip "Need a display for the tests", 4;
         };
         exit;
     };
