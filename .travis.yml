@@ -20,6 +20,17 @@ sudo: required
 
 dist: trusty
 
+# For Prima
+addons:
+  apt:
+    packages:
+      - libgtk2.0-dev
+      - libtext-bidi-perl
+      - libgif-dev
+      - libjpeg-dev
+      - libtiff-dev
+      - libxpm-dev
+
 before_install:
   - sudo apt-get -qq update
   - export DISPLAY=:99.0
