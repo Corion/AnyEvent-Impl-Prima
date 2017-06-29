@@ -48,7 +48,7 @@
    "provides" : {
       "AnyEvent::Impl::Prima" : {
          "file" : "lib/AnyEvent/Impl/Prima.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       }
    },
    "release_status" : "stable",
@@ -59,6 +59,6 @@
          "web" : "https://github.com/Corion/anyevent-impl-prima"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_static_install" : 1
 }

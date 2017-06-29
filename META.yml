@@ -23,12 +23,12 @@ no_index:
 provides:
   AnyEvent::Impl::Prima:
     file: lib/AnyEvent/Impl/Prima.pm
-    version: '0.01'
+    version: '0.02'
 requires:
   AnyEvent: '0'
   Prima: '1.50'
   perl: '5.010'
 resources:
   repository: git://github.com/Corion/anyevent-impl-prima.git
-version: '0.01'
+version: '0.02'
 x_static_install: 1

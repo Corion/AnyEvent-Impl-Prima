@@ -1,3 +1,7 @@
+0.02 20170629
+    . Rework 02-prima-http.t so it passes
+	  This addresses RT 122230, reported and tested by CHORNY
+
 0.01 20170623
     . Released on an unsuspecting world
     . Concept and outline code by Zsbán Ambrus (AMBRUS)
