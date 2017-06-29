@@ -27,8 +27,8 @@ use vars '$VERSION';
 $VERSION = '0.01';
 
 use AnyEvent;
-use Prima ();
-use Prima::Application ();
+require Prima;
+require Prima::Application;
 
 
 sub io { my ($s,%r) = @_;
