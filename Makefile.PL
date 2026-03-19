@@ -48,14 +48,17 @@ my %module = (
     BUILD_REQUIRES =>     { 'ExtUtils::MakeMaker' => 0 },
 
     PREREQ_PM =>     {
-        'vars'     => '0',
-        'AnyEvent' => '0'
+        'AnyEvent'           => '0',
+        'Prima'              => '1.50',
+        'Prima::Application' => '0',
     },
     TEST_REQUIRES =>     {
-        'AnyEvent'       => '0',
-        'AnyEvent::Util' => '0',
-        'POSIX'          => '0',
-        'Test::More'     => '0'
+        'AnyEvent'                => '0',
+        'AnyEvent::HTTP'          => '0',
+        'AnyEvent::Util'          => '0',
+        'POSIX'                   => '0',
+        'Test::More'              => '0',
+        'Test::HTTP::LocalServer' => '0',
     },
 
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
